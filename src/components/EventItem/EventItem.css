@@ -1,0 +1,14 @@
+.event-item {
+    max-width: 150px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.event-item:last-child{
+    padding-bottom: 0;
+
+}
+
+.event-item__button {
+    border-radius: 3px;
+}

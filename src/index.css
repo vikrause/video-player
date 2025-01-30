@@ -3,3 +3,5 @@
 @import "components/App/App.css";
 @import "components/Main/Main.css";
 @import "components/VideoPlayer/VideoPlayer.css";
+@import "components/AnalyticsEventList/AnalyticsEventList.css";
+@import "components/EventItem/EventItem.css";

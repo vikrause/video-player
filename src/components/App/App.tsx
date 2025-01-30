@@ -1,5 +1,5 @@
 import Main from "../Main/Main.tsx";
-import api from "../../Api/Api.ts";
+import api from "../../api/Api.ts";
 import {IAnalyticsEvent} from "../../models.ts";
 import {ReactElement} from "react";
 

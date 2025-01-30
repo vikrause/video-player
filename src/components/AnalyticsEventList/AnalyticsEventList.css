@@ -1,0 +1,17 @@
+.analytics-event {
+    max-height: 500px;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow-y: scroll ;
+    scrollbar-color: #fff #ac5855;
+    padding-right: 20px;
+    margin: 0;
+    border: 1px solid #757575;
+}
+
+.analytics-event__list {
+    max-height: 100%;
+    list-style: none;
+    margin: 0;
+}

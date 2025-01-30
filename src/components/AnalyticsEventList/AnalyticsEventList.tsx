@@ -11,7 +11,6 @@ export default function AnalyticsEventList(props: AnalyticsEventListProps): Reac
     const [preparedEventList, setPreparedEventList] = useState<IPreparedEvent[]>([]);
 
     const getEventList = useCallback(async () => {
-        console.log('useCallback triggered');
         const analyticsEventList = await props.getEventList();
         setPreparedEventList(analyticsEventList.sort((a, b) => {
             return a.timestamp > b.timestamp ? 1 : -1
@@ -30,8 +29,6 @@ export default function AnalyticsEventList(props: AnalyticsEventListProps): Reac
     useEffect(() => {
         getEventList();
     }, []);
-
-    console.log(preparedEventList);
 
     return (
         <div className="analytics-event">

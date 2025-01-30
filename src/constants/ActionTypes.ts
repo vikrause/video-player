@@ -1,0 +1,1 @@
+export const SET_CURRENT_TIMESTAMP: string = 'SET_CURRENT_TIMESTAMP';
