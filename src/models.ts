@@ -1,3 +1,8 @@
+export interface IRootState {
+    timestamp: number,
+    analyticsEventList: IAnalyticsEvent[]
+}
+
 export interface IApi {
     _baseUrl: string;
     _headers: HeadersInit

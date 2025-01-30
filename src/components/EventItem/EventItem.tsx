@@ -1,6 +1,7 @@
 import {useDispatch} from "react-redux";
+import {setCurrentTimestamp} from "../../actions/actions.ts";
 
-interface EventItemProps{
+interface EventItemProps {
     key: string;
     time: string;
     timestamp: number;
@@ -8,9 +9,12 @@ interface EventItemProps{
 
 export default function EventItem(props: EventItemProps) {
     const dispatch = useDispatch();
-    return(
+    return (
         <li className="event-item">
-            <button className="event-item__button" onClick={() => dispatch({type: 'SET_CURRENT_TIMESTAMP', timestamp: props.timestamp })}>{props.time}</button>
+            <button className="event-item__button"
+                    onClick={() => dispatch(
+                        setCurrentTimestamp(props.timestamp)
+                    )}>{props.time}</button>
         </li>
     )
 }

@@ -1,16 +1,19 @@
-import {SET_CURRENT_TIMESTAMP} from "../constants/ActionTypes.ts"
+import { Action } from "../actions/actions.ts"
+import { IRootState } from "../models.ts";
 
-
-interface IActionSetCurrentTimestamp {
-    type: string,
-    timestamp: number
+const initialState: IRootState = {
+    timestamp: 0,
+    analyticsEventList: [],
 }
-type IAction = IActionSetCurrentTimestamp;
 
-export function rootReducer(state = 0, action:  IAction) {
+
+export function rootReducer(state = initialState, action: Action) {
     switch (action.type) {
-        case SET_CURRENT_TIMESTAMP:
-            return action.timestamp;
+        case 'SET_CURRENT_TIMESTAMP':
+            return {...state, timestamp: action.timestamp};
+
+        case 'SET_ANALYTICS_EVENTS_DATA':
+            return {...state, analyticsEventList: action.analyticsEventList};
         default:
             return state;
     }

@@ -2,6 +2,9 @@ import {ReactElement, useCallback, useEffect, useState} from "react";
 import {IAnalyticsEvent, IPreparedEvent} from "../../models.ts";
 import EventItem from "../EventItem/EventItem.tsx";
 import hash from 'object-hash';
+import {useDispatch} from "react-redux";
+import {setAnalyticsEventsData} from "../../actions/actions.ts";
+
 
 interface AnalyticsEventListProps {
     getEventList(): Promise<IAnalyticsEvent[]>
@@ -9,9 +12,11 @@ interface AnalyticsEventListProps {
 
 export default function AnalyticsEventList(props: AnalyticsEventListProps): ReactElement {
     const [preparedEventList, setPreparedEventList] = useState<IPreparedEvent[]>([]);
+    const dispatch = useDispatch();
 
     const getEventList = useCallback(async () => {
         const analyticsEventList = await props.getEventList();
+        dispatch(setAnalyticsEventsData(analyticsEventList));
         setPreparedEventList(analyticsEventList.sort((a, b) => {
             return a.timestamp > b.timestamp ? 1 : -1
         }).map((evt: IAnalyticsEvent) => {
@@ -24,11 +29,11 @@ export default function AnalyticsEventList(props: AnalyticsEventListProps): Reac
                 'analyticsEvent': evt
             };
         }));
-    }, [props]);
+    }, [props, dispatch]);
 
     useEffect(() => {
         getEventList();
-    }, []);
+    }, [getEventList]);
 
     return (
         <div className="analytics-event">
